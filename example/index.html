@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 plugin</title>
+    <style type="text/css">
+		.track,
+    .track-inset,
+    .track-overlay {
+      /*stroke-linecap: round;*/
+    }
+
+    .track {
+      fill: #ddd;
+      stroke: #000;
+      stroke-opacity: 0.3;
+      stroke-width: 0px;
+    }
+
+    .track-inset {
+      fill: #ddd;
+      stroke: #ddd;
+      stroke-width: 0px;
+    }
+
+    .track-overlay {
+      fill: #ddd;
+      fill-opacity: 0;
+      pointer-events: stroke;
+      stroke-width: 50px;
+    }
+
+    .handle {
+      fill: #fff;
+      stroke: #000;
+      stroke-opacity: 0.5;
+      stroke-width: 1px;
+    }
+
+    .scrollButtonGroup {
+      fill: #ddd;
+      stroke: #000;
+      stroke-width: 1px;
+    }
+	</style>
+</head>
+<body>
+
+<svg width="600" height="250" style='stroke-width: 1px; border: solid 1px #000'>
+  <g id="scroller1"> </g>
+  <g id="scroller2"> </g>
+</svg>
+
+
+</body>
+<script type="text/javascript" src="../build/d3-scroller.js"></script>
+<script type="text/javascript">
+  d3.scroller('#scroller1')
+  .attr('transform', "translate(" + 0 + "," + 125 + ")")
+  .draw();
+</script>
+</html>
