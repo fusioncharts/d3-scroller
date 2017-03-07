@@ -17,6 +17,10 @@ var utils = {
   },
   clone: function () {
     return this.parentNode.appendChild(this.cloneNode(true));
+  },
+  toPrecision: function(obj, value) {
+      var tenPow = Math.pow(10, value);
+      return Math.round(obj * tenPow) / tenPow;
   }
 };
 

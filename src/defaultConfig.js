@@ -15,7 +15,8 @@
   values: null,
   handle: {
     x: 70,
-    width: 20
+    width: 20,
+    minWidth: 6
   },
   buttons: {
     width: 14
@@ -26,6 +27,33 @@
       right: 5,
       top: 0,
       bottom: 0
+    }
+  },
+  goti: {
+    width: 20,
+    path: function (ref, width) {
+      var handleConf = ref.attr('handle'),
+        // width = handleConf.width,
+        gotiWidth = Math.min(ref.attr('goti').width, handleConf.minWidth),
+        x = handleConf.x + (width / 2),
+        height = ref.attr('height'),
+        y = height / 2,
+        pathStr = '';
+      if (width <= gotiWidth) {
+        x = handleConf.x + handleConf.minWidth / 2;
+      }
+
+      // this.style('visibility', (width < gotiWidth) ? 'hidden' : 'visible');
+
+      // the center line
+      pathStr += 'M' + x + ',' + (y - height / 4) + 'L' + x + ',' +(y + height / 4);
+
+      // the left line
+      pathStr += 'M' + (x - gotiWidth / 6) + ',' + (y - height / 4) + 'L' + (x - gotiWidth / 6) + ',' +(y + height / 4);
+
+      // the right line
+      pathStr += 'M' + (x + gotiWidth / 6) + ',' + (y - height / 4) + 'L' + (x + gotiWidth / 6) + ',' +(y + height / 4);
+      return pathStr;
     }
   },
   margin: {
