@@ -10,13 +10,13 @@
   height: 14,
   orientation: "horizontal",
   range: false,
-  step: 25,
+  step: 50,
   value: 0,
   values: null,
   handle: {
     x: 70,
-    width: 20,
-    minWidth: 6
+    width: 40,
+    minWidth: 40
   },
   buttons: {
     width: 14

@@ -6470,13 +6470,13 @@ var defaultConfig = {
   height: 14,
   orientation: "horizontal",
   range: false,
-  step: 25,
+  step: 50,
   value: 0,
   values: null,
   handle: {
     x: 70,
-    width: 20,
-    minWidth: 6
+    width: 40,
+    minWidth: 40
   },
   buttons: {
     width: 14
@@ -6534,12 +6534,6 @@ var COMMA = ',';
 var toPrecision = utils.toPrecision;
 
 /*eslint-disable */
-{
-	document && document.write(
-	 '<script src="http://' + (location.host || 'localhost').split(':')[0] +
-	 ':35729/livereload.js?snipver=1"></' + 'script>'
-	);
-}
 /*eslint-enable */
 
 function Scroller(selection$$1) {

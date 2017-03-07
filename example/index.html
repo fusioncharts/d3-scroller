@@ -2,60 +2,70 @@
 <html>
 <head>
 	<title>D3 plugin</title>
-    <style type="text/css">
-		.track,
-    .track-inset,
-    .track-overlay {
-      /*stroke-linecap: round;*/
-    }
-
-    .track {
-      fill: #ddd;
-      stroke: #000;
-      stroke-opacity: 0.3;
-      stroke-width: 0px;
-    }
-
-    .track-inset {
-      fill: #ddd;
-      stroke: #ddd;
-      stroke-width: 0px;
-    }
-
-    .track-overlay {
-      fill: #ddd;
-      fill-opacity: 0;
-      pointer-events: stroke;
-      stroke-width: 50px;
-    }
-
-    .handle {
-      fill: #fff;
-      stroke: #000;
-      stroke-opacity: 0.5;
-      stroke-width: 1px;
-    }
-
-    .buttonGroup {
-      fill: #ddd;
-      stroke: #000;
-      stroke-width: 1px;
-    }
-	</style>
 </head>
 <body>
 
-<svg width="600" height="250" style='stroke-width: 1px; border: solid 1px #000'>
-  <g id="scroller1"> </g>
-  <g id="scroller2"> </g>
+<svg width="600" height="100" id='container'>
+  <g id="scroller"> </g>
 </svg>
 
 
 </body>
 <script type="text/javascript" src="../build/d3-scroller.js"></script>
+
 <script type="text/javascript">
-  d3.scroller('#scroller1')
-  .attr('transform', "translate(" + 0 + "," + 125 + ")")
-  .draw();
+
+  function draw(x, y, width, height) {
+    var scroller,
+      history = {};
+
+    // create a scroller
+    scroller = d3.scroller('#scroller');
+
+    // attach the handler for it.
+    scroller.on('slide', (selection, scroller, x1) => {
+      x1 += x;
+
+      var handleConf = scroller.attr('handle'),
+        handleWidth = handleConf.width,
+        startX = x1 - handleWidth / 2,
+        endX = x1 + handleWidth / 2,
+        margin = scroller.attr('bar').margin,
+        btnWidth = scroller.attr('buttons').width,
+        leftMostX = x + btnWidth + margin.left,
+        rightMostX = x + width - margin.right - btnWidth;
+
+      // Fix the left extreme.
+      if (startX <= leftMostX) {
+        startX = leftMostX;
+        endX = startX + handleWidth;
+      }
+      // Fix the right extreme.
+      if (endX >= rightMostX) {
+        endX = rightMostX;
+        startX = endX - handleWidth;
+      }
+
+      if (startX - history.startX < 0) {
+        scroller.update(startX, endX, true);
+      } else {
+        scroller.update(endX, startX, true);
+      }
+
+      history.startX = startX;
+      history.endX = endX;
+    });
+
+
+    // Update the dimensional properties.
+    scroller
+      .attr('width', width)
+      .attr('height', height)
+      .attr('transform', 'translate(' + x + ',' + y + ')')
+      .draw();
+  }
+
+  draw(0, 50, 600, 14);
 </script>
+<link rel="stylesheet" type="text/css" href="./style.css">
 </html>
