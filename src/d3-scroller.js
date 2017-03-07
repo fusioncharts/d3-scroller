@@ -1,21 +1,22 @@
 import {select, event} from 'd3-selection';
 import {drag} from 'd3-drag';
 import {scaleLinear} from 'd3-scale';
+import {transition} from 'd3-transition';
 
 
 import utils from './utils';
 import defaultConfig from './defaultConfig';
 
 var UNDEFINED,
-	COMMA = ',',
+  COMMA = ',',
   toPrecision = utils.toPrecision;
 
 /*eslint-disable */
 if (ENV !== 'production') {
-	document && document.write(
-	 '<script src="http://' + (location.host || 'localhost').split(':')[0] +
-	 ':35729/livereload.js?snipver=1"></' + 'script>'
-	);
+  document && document.write(
+   '<script src="http://' + (location.host || 'localhost').split(':')[0] +
+   ':35729/livereload.js?snipver=1"></' + 'script>'
+  );
 }
 /*eslint-enable */
 
@@ -176,7 +177,7 @@ Scroller.prototype.drawSelf = function () {
   }
 
   function hue(h, doNotAnimate, w) {
-  	hueTarget = h;
+    hueTarget = h;
     handle
       .transition()
       .duration(doNotAnimate ? false : duration)
@@ -390,8 +391,8 @@ Scroller.prototype.on = function (type, callback) {
 
 // Constructs a new fusionText generator with the default settings.
 export default function(selection, options) {
-	if (typeof selection === 'string') {
-		selection = select(selection);
-	}
+  if (typeof selection === 'string') {
+    selection = select(selection);
+  }
   return new Scroller(selection, options);
 }
