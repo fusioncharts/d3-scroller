@@ -26,15 +26,10 @@
   },
   "homepage": "https://github.com/AyanGhatak/d3-scroller#readme",
   "dependencies": {
-    "d3-dispatch": "^1.0.2",
+    "d3-selection": "^1.0.3",
     "d3-drag": "^1.0.2",
     "d3-scale": "^1.0.4",
-    "d3-selection": "^1.0.3",
-    "d3-brush": "^1.0.3",
-    "d3-ease": "^1.0.2",
-    "d3-format": "^1.0.2",
-    "d3-transition": "^1.0.3",
-    "d3-zoom": "^1.1.1"
+    "d3-transition": "^1.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
