@@ -1,6 +1,6 @@
 {
   "name": "d3-scroller",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Draws a scroller using d3",
   "main": "./build/d3-scroller.js",
   "directories": {
