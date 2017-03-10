@@ -7,13 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "pretest": "script/pretest",
-    "test": "script/test",
-    "prepublish": "script/prepublish",
-    "dev": "NODE_ENV=dev script/prepublish --watch",
-    "build": "NODE_ENV=production script/prepublish",
+    "lint": "eslint ./",
+    "dev": "NODE_ENV=dev rm -rf build && mkdir build && rollup -c --watch -f umd -g d3-selection:d3,d3-drag:d3,d3-scale:d3,d3-transition:d3 -n d3 -o build/d3-scroller.js -- index.js && uglifyjs  build/d3-scroller.js -c negate_iife=false -m -o build/d3-scroller.min.js",
+    "build": "NODE_ENV=production rm -rf build && mkdir build && rollup -c -f umd -g d3-selection:d3,d3-drag:d3,d3-scale:d3,d3-transition:d3 -n d3 -o build/d3-scroller.js -- index.js && uglifyjs  build/d3-scroller.js -c negate_iife=false -m -o build/d3-scroller.min.js",
     "reload": "livereload 'build/'",
-    "watch": "npm-run-all --parallel reload dev"
+    "test": "tape 'test/**/*-test.js';",
+    "watch": "npm-run-all --parallel reload dev",
+    "start": ""
   },
   "repository": {
     "type": "git",

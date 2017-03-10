@@ -24,12 +24,13 @@ If you use NPM, `npm install d3-scroller`. Otherwise, download the [latest relea
 <script src="https://raw.githubusercontent.com/AyanGhatak/d3-scroller/master/build/d3-scroller.js"></script>
 
 <script>
-var scrollerElem = d3.scroller('#container');
+var scrollerElem = d3.scroller('#container')
+  .draw();
 
 </script>
 ```
 
-[Try d3-scroller in your browser.](https://cdn.rawgit.com/AyanGhatak/d3-scroller/7bf5e4e2/example/index.html)
+[Try d3-scroller in your browser.](https://jsfiddle.net/AyanGhatak/o17oqyn0/embedded/result,js,html,css/)
 
 ## API Reference
 
@@ -46,31 +47,31 @@ Please refer to the [default config file](https://raw.githubusercontent.com/Ayan
 ```js
 // container is the id of the selector where the scroller is to be rendered.
 d3.scroller('#container');
-    .attr('width', 500)
-    .attr('height', 20);
+  .attr('width', 500)
+  .attr('height', 20);
 ```
 * <b>Change the unit step.</b>
 Sometimes it becomes very useful to control the momentum of the movement of the scroller. Here is how to achieve that
 ```js
 // On every click on the buttons the handle moves 200px, i.e. the step movement for the handle on button interactions.
-d3.scroller('#container');
-    .attr('step', 200);
+d3.scroller('#container')
+  .attr('step', 200);
 ```
 * <b>Choosing the initial position of the handle</b>
 The handle is the bar element which facilitates the interaction on it.
 ```js
 // Placing the handle, having a width of 40px, at 70 pixels away from the left side of the scroller.
 d3.scroller('#container');
-    .attr('handle', {
+  .attr('handle', {
     x: 70,
-      width: 40
+    width: 40
   });
 ```
 * <b>Customise the goti visuals</b>
 The small stub visual in placed centrally in the scroller bar(handle) is being referred to `goti` here. Feel free to customise its visual by feeding the path methods.
 ```js
 d3.scroller('#container');
-    .attr('goti', {
+  .attr('goti', {
     width: 25,
     path: function () {
       // The custom path suitable here comes here.
@@ -91,7 +92,7 @@ Lets check a simple snippet for this
 // Assuming the variables(x, y, width, height) are defined in the scope, this snippet
 d3.scroller('#container')
   .attr('width', width)
-    .attr('height', height)
+  .attr('height', height)
   .attr('transform', 'translate(' + x + ',' + y + ')')
   .draw()
 ```

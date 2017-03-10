@@ -478,26 +478,14 @@ Scroller.prototype.on = function (type, callback) {
 
 
 // Constructs a new fusionText generator with the default settings.
-var d3Scroller = function(selection, options) {
+var scroller = function(selection, options) {
   if (typeof selection === 'string') {
     selection = d3Selection.select(selection);
   }
   return new Scroller(selection, options);
 };
 
-// export {transition} from 'd3-transition';
-// export {select, event} from 'd3-selection';
-// export {drag} from "d3-drag";
-// export {brushX} from "d3-brush";
-// export {zoom, zoomIdentity} from "d3-zoom";
-
-
-
-// export * from "d3-ease";
-
-// export {formatDefaultLocale, format, formatPrefix,formatLocale,formatSpecifier,precisionFixed,precisionPrefix,precisionRound} from "d3-format";
-
-exports.scroller = d3Scroller;
+exports.scroller = scroller;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
