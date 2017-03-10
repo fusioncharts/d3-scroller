@@ -22,14 +22,14 @@ If you use NPM, `npm install d3-scroller`. Otherwise, download the [latest relea
 
 <!-- d3-scroller -->
 <script src="https://raw.githubusercontent.com/AyanGhatak/d3-scroller/master/build/d3-scroller.js"></script>
-<script>
 
-var div = d3.selectAll("div");
+<script>
+var scrollerElem = d3.scroller('#container');
 
 </script>
 ```
 
-[Try d3-scroller in your browser.](https://cdn.rawgit.com/AyanGhatak/d3-scroller/b10385d2/example/index.html)
+[Try d3-scroller in your browser.](https://cdn.rawgit.com/AyanGhatak/d3-scroller/7bf5e4e2/example/index.html)
 
 ## API Reference
 

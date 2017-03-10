@@ -19,7 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/AyanGhatak/d3-scroller.git"
   },
-  "author": "",
+  "author": "FusionCharts Technologies  <support@fusioncharts.com>",
+  "contributors": ["AyanGhatak <ghatak.ayan.btech@gmail.com> (https://github.com/AyanGhatak)"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AyanGhatak/d3-scroller/issues"
