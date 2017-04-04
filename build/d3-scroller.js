@@ -168,7 +168,7 @@ Scroller.prototype.attr = function (key, value) {
   }
 };
 
-Scroller.prototype.drawSelf = function () {
+Scroller.prototype.drawSelf = function (animate) {
   var self = this,
     selection = this.attr('selection'),
     btnConfig = this.attr('buttons'),
@@ -303,16 +303,16 @@ Scroller.prototype.drawSelf = function () {
     self.attr('handle').width = endX - startX;
     self.emit('change');
   };
-  hue(hueTarget, true);
+  hue(hueTarget, animate);
   return this;
 };
 
-Scroller.prototype.draw = function () {
-  return this.drawSelf()
-    .drawButtons();
+Scroller.prototype.draw = function (animate) {
+  return this.drawSelf(animate)
+    .drawButtons(animate);
 };
 
-Scroller.prototype.drawButtons = function () {
+Scroller.prototype.drawButtons = function (animate) {
   var self = this,
     selection = this.attr('selection'),
     height = this.attr('height'),
@@ -320,6 +320,7 @@ Scroller.prototype.drawButtons = function () {
     width = this.attr('width'),
     margin = this.attr('margin'),
     leftMargin = margin.left,
+    duration = this.attr('animate'),
     translate = function (x, y) {
       return  'translate(' + x + COMMA + y + ')';
     },
@@ -344,9 +345,11 @@ Scroller.prototype.drawButtons = function () {
     self.emit('slide', x + handleConf.width / 2);
   });
 
-  selection
-    .selectAll('.buttonGroup g')
-    .attr('transform', function (d, index) {
+  selection = selection
+    .selectAll('.buttonGroup g');
+
+  animate && (selection = selection.transition().duration(duration));
+  selection.attr('transform', function (d, index) {
       return index ? translate(width - margin.right - btnWidth, 0) : translate(2 * leftMargin, 0);
     })
     .each(function (d, index) {
