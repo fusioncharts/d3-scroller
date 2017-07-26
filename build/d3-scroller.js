@@ -261,7 +261,6 @@ Scroller.prototype.drawSelf = function (animate) {
         .style('stroke', '#000');
 
     goti = slider.selectAll('.fusionctime-scroller-goti');
-    console.log(this.config);
 
     function normalize(h) {
         var halfHandleWidth = handle.attr('width') / 2,
