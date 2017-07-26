@@ -158,27 +158,29 @@ Scroller.prototype.drawSelf = function (animate) {
         .attr('height', height);
 
     slider
-        .selectAll('.handle')
+        .selectAll('.fusionctime-scroller-handle')
         .data([1])
         .enter()
         .insert("rect", ".track-overlay")
-        .attr("class", "handle");
+        .attr("class", "fusionctime-scroller-handle");
 
     handle = slider
-        .selectAll('.handle')
+        .selectAll('.fusionctime-scroller-handle')
         .attr("width", handleConf.width)
         .attr('height', height)
-        .attr('x', btnConfig.width + barMargin.left + margin.left);
+        .attr('x', btnConfig.width + barMargin.left + margin.left)
+        .style('fill', '#cccccc');
 
-    goti = slider.selectAll('.goti');
+    goti = slider.selectAll('.fusionctime-scroller-goti');
 
     goti.data([1])
         .enter()
         .insert('path', '.track-overlay')
-        .classed('goti', true)
+        .classed('fusionctime-scroller-goti', true)
         .style('stroke', '#000');
 
-    goti = slider.selectAll('.goti');
+    goti = slider.selectAll('.fusionctime-scroller-goti');
+    console.log(this.config)
 
     function normalize(h) {
         var halfHandleWidth = handle.attr('width') / 2,
@@ -262,10 +264,9 @@ Scroller.prototype.drawButtons = function (animate) {
             return index ? 'rightButton' : 'leftButton';
         })
         .on('click', function (d, i) {
-            self.start();
             var handleConf = self.attr('handle'),
                 x = handleConf.x + ((i ? 1 : -1) * self.attr('step'));
-            self.emit('slide', x + handleConf.width / 2, self.end);
+            self.emit('slide', x + handleConf.width / 2);
         });
 
     selection = selection
@@ -377,7 +378,7 @@ Scroller.prototype.stop = function () {
   
 };
 
-Scroller.prototype.emit = function (type, options, callback) {
+Scroller.prototype.emit = function (type, options) {
     var callbacks = this.getEvents(type) || [],
         i, 
         len,
@@ -386,7 +387,6 @@ Scroller.prototype.emit = function (type, options, callback) {
         slider.call(callbacks[i], this, options);
     }
 
-    callback();
     return this;
 };
 

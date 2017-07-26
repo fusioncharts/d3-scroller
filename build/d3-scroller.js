@@ -239,27 +239,29 @@ Scroller.prototype.drawSelf = function (animate) {
         .attr('height', height);
 
     slider
-        .selectAll('.handle')
+        .selectAll('.fusionctime-scroller-handle')
         .data([1])
         .enter()
         .insert("rect", ".track-overlay")
-        .attr("class", "handle");
+        .attr("class", "fusionctime-scroller-handle");
 
     handle = slider
-        .selectAll('.handle')
+        .selectAll('.fusionctime-scroller-handle')
         .attr("width", handleConf.width)
         .attr('height', height)
-        .attr('x', btnConfig.width + barMargin.left + margin.left);
+        .attr('x', btnConfig.width + barMargin.left + margin.left)
+        .style('fill', '#cccccc');
 
-    goti = slider.selectAll('.goti');
+    goti = slider.selectAll('.fusionctime-scroller-goti');
 
     goti.data([1])
         .enter()
         .insert('path', '.track-overlay')
-        .classed('goti', true)
+        .classed('fusionctime-scroller-goti', true)
         .style('stroke', '#000');
 
-    goti = slider.selectAll('.goti');
+    goti = slider.selectAll('.fusionctime-scroller-goti');
+    console.log(this.config);
 
     function normalize(h) {
         var halfHandleWidth = handle.attr('width') / 2,
@@ -465,6 +467,7 @@ Scroller.prototype.emit = function (type, options) {
     for (i = 0, len = callbacks.length; i < len; i += 1) {
         slider.call(callbacks[i], this, options);
     }
+
     return this;
 };
 
